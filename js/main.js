@@ -31,7 +31,7 @@ var tile = function(){
 		}
 		return tiles;
 	};
-	
+
 	//draw tiles
 	this.drawBoard = function(){
 		for(i=0;i<tiles.length;i++){
@@ -39,11 +39,14 @@ var tile = function(){
 			tile.div.className = 'tile';
 			tile.addEventlistener('click', function(event){
 
-					if(player[0])
-						drawTileDiv.innerHTML = '</span><span class="remove" onclick="cartObject.removeFromCart('+i+')">X</span>';
-					else if(player[1])
-						drawTileDiv.innerHTML = '</span><span class="remove" onclick="cartObject.removeFromCart('+i+')">Y</span>';
-					
+					if(player[playerCounter == 0])
+						drawTileDiv.innerHTML = '<span onclick="">X</span>';
+					playerCounter++;
+					else if(player[playerCounter == 1])
+						drawTileDiv.innerHTML = '<span onclick="">Y</span>';
+					playerCounter--;
+					else
+						playerCounter = 1- playerCounter;
 			});
 		}
 		document.body.appendChild(tileDiv);
@@ -53,14 +56,13 @@ var tile = function(){
 	
 
 	  //testing winner here
-	 for(i = 0; i<3; i++){
-		for(j=0; j<3; j++){
-			
-		  var test = function(){
-	  	if(tile(1,1)=="X" && tile(i+i,j+1)=="X" && tile()=="X"){
+	  var test = function(){
+		 for(i = 0; i<3; i++){
+			for(j=0; j<3; j++){
+			  	if(tile(1,1)=="X" && tile(i+i,j+1)=="X" && tile()=="X"){
 
-	  	}
-	  		if(tile(1,1)=="Y" && tile(i+i,j+1)=="Y" && tile()=="Y"){
+		  	}
+		  		if(tile(1,1)=="Y" && tile(i+i,j+1)=="Y" && tile()=="Y"){
 
 	  		}
 	  
