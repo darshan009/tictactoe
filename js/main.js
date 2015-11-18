@@ -1,10 +1,10 @@
 //temp fn
-
+/*
 var tile = function(row, column){
 	this.row = row;
 	this.column = column;
 };
-
+*/
 var player = function(name, sign){
 	this.sign = sign;
 
@@ -15,57 +15,65 @@ players[1] = new player(prompt("Enter your player2 name?"));
 
 playerCounter =0;
 
-var tile = function(){
-
-	//init tiles
+var tiles = [];
+//init tiles
+var tile = function(row, column){
+	this.row = row;
+	this.column = column;
+	
 	this.init = function(){
-		var tiles = [];
+		
 
 		for(i = 0; i<3; i++){
 		for(j=0; j<3; j++){
 			
 			var tileObject = new tile( i, j);
 			tiles.push(tileObject);
-			
+			console.log("tilepart??");
 			}
 		}
 		return tiles;
 	};
 
+
 	//draw tiles
 	this.drawBoard = function(){
 		for(i=0;i<tiles.length;i++){
-			tileDiv = document.createElement('div');
-			tile.div.className = 'tile';
-			tile.addEventlistener('click', function(event){
+			div = document.createElement('div');
+			div.className = 'tile';
+			div.addEventListener('click', function(event){
 
-					if(player[playerCounter == 0])
-						drawTileDiv.innerHTML = '<span onclick="">X</span>';
-					playerCounter++;
-					else if(player[playerCounter == 1])
-						drawTileDiv.innerHTML = '<span onclick="">Y</span>';
-					playerCounter--;
-					else
-						playerCounter = 1- playerCounter;
+					if(player[playerCounter == 0]){
+						drawDiv.innerHTML = '<span onclick="">X</span>';
+						playerCounter++;
+					}
+					else if(player[playerCounter == 1]){
+						drawDiv.innerHTML = '<span onclick="">Y</span>';
+						playerCounter--;
+					}					
 			});
+					console.log("drawpart");
 		}
-		document.body.appendChild(tileDiv);
+		
+		document.body.appendChild(div);
 	};
 
 };
-	
+	var myTiles = new tile(3,3);
+	myTiles.init();
+	myTiles.drawBoard();
 
 	  //testing winner here
 	  var test = function(){
 		 for(i = 0; i<3; i++){
 			for(j=0; j<3; j++){
-			  	if(tile(1,1)=="X" && tile(i+i,j+1)=="X" && tile()=="X"){
+			  	if(tile()=="X" && tile()=="X" && tile()=="X"){
 
 		  	}
-		  		if(tile(1,1)=="Y" && tile(i+i,j+1)=="Y" && tile()=="Y"){
+		  		if(tile()=="Y" && tile()=="Y" && tile()=="Y"){
 
 	  		}
 	  
-	  };
+	  }
 }
-}
+};
